@@ -1,0 +1,51 @@
+http://blog.teamtreehouse.com/deploy-static-site-heroku
+
+The index.php file will be served by Heroku before your index.html. 
+We need to make the browser redirect from index.php to index.html.
+We only need to include one line of PHP code.
+
+<?php header( 'Location: /index.html' ) ;  ?>
+
+
+//Login in heroku:
+$ heroku login
+Enter your Heroku credentials:
+Email: michaelzhuang16@gmail.com
+Password: ********
+Logged in as michaelzhuang16@gmail.com
+
+//push to heroku from git:
+$ heroku apps:create dongpo16
+Creating dongpo16... done
+https://dongpo16.herokuapp.com/ | https://git.heroku.com/dongpo16.git
+$ git push heroku master
+
+----------------
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
+----------------
+create a new repository on the command line:
+
+echo "# test_heroku" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Dongpo16/test_heroku.git
+git push -u origin master
+
+--------------------
+push an existing repository from the command line:
+git add .
+git commit -m"upate"
+//do I need this ?
+//git remote add origin https://github.com/Dongpo16/test_heroku.git
+git push -u origin master
+
+
+---------------------
+//switch to the right user name to push the depository
+//to remote
+git config credential.${remote}.username dongpo16
+git config credential.helper store
+git push origin master
