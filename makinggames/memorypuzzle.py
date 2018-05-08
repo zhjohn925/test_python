@@ -6,7 +6,7 @@
 import random, pygame, sys
 from pygame.locals import *
 
-FPS = 10 # frames per second, the general speed of the program
+FPS = 30 # frames per second, the general speed of the program
 WINDOWWIDTH = 640 # size of window's width in pixels
 WINDOWHEIGHT = 480 # size of windows' height in pixels
 REVEALSPEED = 8 # speed boxes' sliding reveals and covers
@@ -64,26 +64,15 @@ def main():
     DISPLAYSURF.fill(BGCOLOR)
     startGameAnimation(mainBoard)
 
-    while True:
-
-       for event in pygame.event.get():
-          if event.type == QUIT:
-             pygame.quit()
-             sys.exit()
-       pygame.display.update()
-       FPSCLOCK.tick(FPS)
-
-    while False: # main game loop
+    while True: # main game loop
         mouseClicked = False
         DISPLAYSURF.fill(BGCOLOR) # drawing the window
         drawBoard(mainBoard, revealedBoxes)
 
         for event in pygame.event.get(): # event handling loop
-            if event.type == QUIT: # or (event.type == KEYUP and event.key == K_ESCAPE):
+            if event.type == QUIT or (event.type == KEYUP and event.key == K_ESCAPE):
                 pygame.quit()
                 sys.exit()
-            elif event.type == KEYUP and event.key == K_ESCAPE:
-                startGameAnimation(mainBoard)
             elif event.type == MOUSEMOTION:
                 mousex, mousey = event.pos
             elif event.type == MOUSEBUTTONUP:
@@ -259,7 +248,7 @@ def drawBoxCovers(board, boxes, coverage):
 #Do the box reveal animation
 ####################################################################### 
 def revealBoxesAnimation(board, boxesToReveal):
-   for coverage in [40, 30, 20, 10, 0]:#range (BOXSIZE, (-REVEALSPEED)-1, -REVEALSPEED):
+   for coverage in range (BOXSIZE, (-REVEALSPEED)-1, -REVEALSPEED):
       drawBoxCovers(board, boxesToReveal, coverage)
       
 #######################################################################
@@ -307,7 +296,7 @@ def startGameAnimation(board):
       #reveal 8 boxes 
       revealBoxesAnimation(board, boxGroup)
       #cover up the same 8 boxes
-      #coverBoxesAnimation(board, boxGroup)
+      coverBoxesAnimation(board, boxGroup)
       
 
 def gameWonAnimation(board):
