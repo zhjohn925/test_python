@@ -11,7 +11,9 @@ if len(sys.argv) < 2:
     sys.exit()
 location = ' '.join(sys.argv[1:])
 
+#from pprint import pprint
 #r = requests.get('http://api.openweathermap.org/data/2.5/weather?q=San&Jose&APPID=211c8f8388f56112f2b670d94d784c6f')
+#pprint(r.json())
 
 # Download the JSON data from OpenWeatherMap.org's API
 url ='http://api.openweathermap.org/data/2.5/forecast/daily?q=%s&cnt=3&APPID=211c8f8388f56112f2b670d94d784c6f' % (location)
