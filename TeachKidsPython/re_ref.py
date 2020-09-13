@@ -1,4 +1,4 @@
-# https://github.com/zhjohn925/test_python/new/master/TeachKidsPython
+# https://www.analyticsvidhya.com/blog/2015/06/regular-expression-python/
 # https://docs.python.org/3/library/re.html
 
 # Operators 	         Description
